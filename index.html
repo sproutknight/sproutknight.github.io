@@ -49,6 +49,12 @@
     font-weight: 700; text-decoration: none; }
   .trailer a:hover { color: var(--gold); }
   .trailer .soon { font-weight: 500; }
+  /* The community: Discord's blurple (white on #5865F2: contrast 4.6:1), a plain chat-bubble icon (not Discord's logo). */
+  .community { margin: 18px 0 0; }
+  .community a { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 10px 22px; border-radius: 12px;
+    background: #5865F2; color: #fff; font-weight: 700; text-decoration: none; }
+  .community a:hover, .community a:focus-visible { background: #4752C4; color: #fff; }
+  .community svg { width: 22px; height: 22px; flex: none; }
   .legal { font-size: 13px; color: var(--muted); margin-top: 36px; }
   [hidden] { display: none !important; }
 </style>
@@ -77,6 +83,8 @@
       <span class="soon" id="google-soon">Coming soon on Google Play</span>
     </div>
 
+    <p class="community"><a href="https://discord.gg/QPPgjcwswJ" target="_blank" rel="noopener" id="discord"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M4 3h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9.5L5 21v-4H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm3 6.25a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zm5 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5zm5 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5z"/></svg>Join our Discord</a></p>
+
     <p class="trailer"><a id="trailer" href="#" hidden>&#9654; Watch the trailer</a><span class="soon" id="trailer-soon">Trailer coming soon</span></p>
 
     <p class="legal">Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions.
@@ -84,7 +92,7 @@
   </div>
 </main>
 <footer>
-  <div class="wrap">Mossforge Games · <a href="https://mossforgegames.github.io/privacy.html">Privacy policy</a> · <a href="mailto:mossforgegames@gmail.com">mossforgegames@gmail.com</a></div>
+  <div class="wrap">Mossforge Games · <a href="https://mossforgegames.github.io/privacy.html">Privacy policy</a> · <a href="https://discord.gg/QPPgjcwswJ" target="_blank" rel="noopener">Discord</a> · <a href="mailto:mossforgegames@gmail.com">mossforgegames@gmail.com</a></div>
 </footer>
 <script>
   // The page follows the switches above (without JavaScript it shows the App Store badge and "Coming soon").
