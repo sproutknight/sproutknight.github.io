@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- https://sproutknight.github.io: a standalone copy of mossforgegames.github.io/play (site/play/index.html).
+     Every file it needs sits next to it; the Mossforge pages are linked in full. Keep both copies alike. -->
+<script>
+  // ===== THE SWITCHES (edit these lines only) ==========================================================
+  // Android: false = Android visitors stay on this page and read "Coming soon on Google Play".
+  //          true  = Android visitors go straight to Google Play (once Sprout Knight is live there).
+  var ANDROID_LIVE = false;
+  // The trailer on YouTube: paste its link between the quotes once it's up (empty = "Trailer coming soon").
+  var TRAILER_URL = "";
+  // ======================================================================================================
+  var APP_STORE = "https://apps.apple.com/app/id6823737097";
+  var GOOGLE_PLAY = "https://play.google.com/store/apps/details?id=com.mossforgegames.sproutknight";
+
+  // A phone goes straight to its store: an iPhone or iPad to the App Store, an Android phone to Google Play
+  // (once ANDROID_LIVE). Add ?page to the address to see this page on a phone anyway. Nothing is stored or sent.
+  (function () {
+    if (/[?&]page(=|&|$)/.test(location.search)) return;
+    var ua = navigator.userAgent || "";
+    var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    if (ios) { location.replace(APP_STORE); return; }
+    if (ANDROID_LIVE && /Android/i.test(ua)) { location.replace(GOOGLE_PLAY); }
+  })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Play Sprout Knight</title>
+<meta name="description" content="Sprout Knight: Horde Survivor, a one-thumb horde-survival game for iPhone and Android. Free to play.">
+<link rel="icon" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+<style>
+  .play { text-align: center; }
+  .play .icon { width: 128px; height: 128px; border-radius: 28px; display: block; margin: 8px auto 18px; }
+  .play h1 { margin-bottom: 6px; }
+  .play .lead { font-size: 19px; margin: 0 auto 6px; max-width: 520px; }
+  .badges { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px; margin: 26px 0 8px; }
+  /* Apple: the official badge unchanged, at least 40 px tall, clear space of a quarter of its height around it. */
+  .badges .apple img { display: block; height: 54px; width: auto; }
+  /* Google: the official badge unchanged; its image carries its own clear space, so 80 px tall shows the badge as
+     tall as Apple's (the same size or larger, as both guidelines ask). */
+  .badges .google img { display: block; height: 80px; width: auto; }
+  .soon { display: inline-block; padding: 10px 18px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel);
+    color: var(--muted); font-weight: 600; }
+  .trailer { margin: 22px 0 0; }
+  .trailer a { display: inline-block; padding: 10px 20px; border-radius: 999px; background: #3b4a2a; color: var(--accent);
+    font-weight: 700; text-decoration: none; }
+  .trailer a:hover { color: var(--gold); }
+  .trailer .soon { font-weight: 500; }
+  .legal { font-size: 13px; color: var(--muted); margin-top: 36px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="https://mossforgegames.github.io/"><img src="mossforge-logo.png" alt="">Mossforge Games</a>
+    <nav><a href="https://mossforgegames.github.io/">Games</a><a href="https://mossforgegames.github.io/press.html">Press</a><a href="https://mossforgegames.github.io/privacy.html">Privacy</a></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap play">
+    <img class="icon" src="sproutknight-app-icon.png" alt="Sprout Knight's app icon: the Knight's war cry">
+    <h1>Sprout Knight: Horde Survivor</h1>
+    <p class="lead">One hero. One thumb. A whole horde.</p>
+    <p class="muted">Dodge, dash and evolve your weapons. 10 chapters, 6 heroes, pets and ultimates. Free to play.</p>
+
+    <div class="badges">
+      <a class="apple" href="https://apps.apple.com/app/id6823737097" id="app-store">
+        <img src="badge-app-store.svg" alt="Download on the App Store">
+      </a>
+      <a class="google" href="https://play.google.com/store/apps/details?id=com.mossforgegames.sproutknight" id="google-play" hidden>
+        <img src="badge-google-play.png" alt="Get it on Google Play">
+      </a>
+      <span class="soon" id="google-soon">Coming soon on Google Play</span>
+    </div>
+
+    <p class="trailer"><a id="trailer" href="#" hidden>&#9654; Watch the trailer</a><span class="soon" id="trailer-soon">Trailer coming soon</span></p>
+
+    <p class="legal">Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries and regions.
+      App Store is a service mark of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.</p>
+  </div>
+</main>
+<footer>
+  <div class="wrap">Mossforge Games · <a href="https://mossforgegames.github.io/privacy.html">Privacy policy</a> · <a href="mailto:mossforgegames@gmail.com">mossforgegames@gmail.com</a></div>
+</footer>
+<script>
+  // The page follows the switches above (without JavaScript it shows the App Store badge and "Coming soon").
+  if (ANDROID_LIVE) {
+    document.getElementById("google-play").hidden = false;
+    document.getElementById("google-soon").hidden = true;
+  } else if (/Android/i.test(navigator.userAgent || "")) {
+    var soon = document.getElementById("google-soon");  // (an Android visitor: their store's news first)
+    soon.parentNode.insertBefore(soon, soon.parentNode.firstChild);
+  }
+  if (TRAILER_URL) {
+    var trailer = document.getElementById("trailer");
+    trailer.href = TRAILER_URL;
+    trailer.hidden = false;
+    document.getElementById("trailer-soon").hidden = true;
+  }
+</script>
+</body>
+</html>
